@@ -5,11 +5,11 @@ services:
   samba:
     image: dperson/samba # no hay tag con versiones, solo latest
     restart: always
-    command: '-u "pi;password" -s "media;/media;yes;no" -s "downloads;/downloads;yes;no"'
+    command: '-u "pi;sacocopi5" -s "media;/media;yes;no" -s "downloads;/downloads;yes;no"'
     stdin_open: true
     tty: true
     environment:
-      - TZ=America/Argentina/Mendoza
+      - TZ=America/Bogota
     ports:
       - 139:139
       - 445:445
@@ -26,8 +26,9 @@ services:
     # ports:
     #  - 32400:32400
     #  - 33400:33400
+    hostname: plex
     environment:
-      - TZ=America/Argentina/Mendoza
+      - TZ=America/Bogota
     volumes:
       - ${STORAGE}/Plex Media Server:/root/Library/Application Support/Plex Media Server
       - ${MEDIA}:/media
@@ -62,5 +63,5 @@ services:
       - PUID=1001
       - PGID=1001
       - TORRENT_PLUGIN=transmission
-      - FG_WEBUI_PASSWD=p3l4d0_N3RD # la puedes cambiar por la que quieras
+      - FG_WEBUI_PASSWD=S4coCo_pi4_SD # la puedes cambiar por la que quieras
     restart: unless-stopped
